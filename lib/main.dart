@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pulsepoint/welcome/WelcomePage.dart';
+import 'package:pulsepoint/welcome/welcome_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
