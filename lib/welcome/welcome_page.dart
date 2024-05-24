@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -12,44 +11,79 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: SafeArea(
-          child: Container(
-        color: const Color.fromARGB(255, 255, 0, 0),
-        child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          margin: const EdgeInsets.symmetric(vertical: 10),
-          color: Colors.white,
-          alignment: Alignment.center,
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+        child: Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/welcome_img.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 20),
-                  child: Text(
-                    "PulsePoint",
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 213, 25, 8)),
+                const Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "PulsePoint",
+                        style: TextStyle(
+                          fontSize: 36,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        "\"Where every drop counts. Join us in saving lives today!\"",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                const Text(
-                  "Welcome to Pulse Point",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 20, color: Color.fromARGB(255, 255, 0, 0)),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.red, backgroundColor: Colors.white,
+                        textStyle: const TextStyle(fontSize: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ), // Implement navigation to login
+                      child: const Text("Login"),
+                    ),
+                    const SizedBox(height: 10),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.red, backgroundColor: Colors.white,
+                        textStyle: const TextStyle(fontSize: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ), // Implement navigation to signup
+                      child: const Text("Signup"),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: ElevatedButton(
-                      onPressed: () {}, child: const Text("Let's Start")),
-                )
-              ]),
+                const SizedBox(height: 50), // Add some spacing at the bottom
+              ],
+            ),
+          ],
         ),
-      )),
+      ),
     );
   }
 }
