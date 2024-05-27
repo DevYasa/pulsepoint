@@ -27,22 +27,22 @@ class _WelcomePageState extends State<WelcomePage> {
                     ),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start, // Adjusted for text to start higher
                     children: [
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.symmetric(horizontal: 50, vertical: 0),
-                          child: Text(
-                            "PulsePoint",
+                        child: Text(
+                          "PulsePoint",
                           style: TextStyle(
-                          fontSize: 55,
-                          fontWeight: FontWeight.w800,
-                          color: Color.fromARGB(255, 255, 0, 0),
+                            fontSize: 55,
+                            fontWeight: FontWeight.w800,
+                            color: Color.fromRGBO(189, 17, 30, 1),
+                          ),
                         ),
                       ),
-                      ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.symmetric(horizontal: 60, vertical: 0), // Reduced vertical padding
                         child: Text(
                           "\"Where every drop counts. Join us in saving lives today!\"",
@@ -54,35 +54,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 30), // Adjusted space before the buttons
-                      ElevatedButton(
-                        onPressed: () {}, // Implement navigation to login
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.red,
-                          backgroundColor: Colors.white,
-                          textStyle: const TextStyle(fontSize: 20),
-                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        child: const Text("Login"),
-                      ),
-                      const SizedBox(height: 10),
-                      ElevatedButton(
-                        onPressed: () {}, // Implement navigation to signup
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.red,
-                          backgroundColor: Colors.white,
-                          textStyle: const TextStyle(fontSize: 20),
-                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        child: const Text("Signup"),
-                      ),
-                      const SizedBox(height: 50), // Spacing at the bottom
+                      SizedBox(height: 30), // Space before the bottom
                     ],
                   ),
                 ),
@@ -90,7 +62,7 @@ class _WelcomePageState extends State<WelcomePage> {
             ),
             // Positioned Image at the bottom
             Positioned(
-              bottom: -150, // Align it to the bottom of the screen
+              bottom: -75, // Align it to the bottom of the screen
               left: 0,
               right: 0,
               top: 500,
@@ -98,6 +70,43 @@ class _WelcomePageState extends State<WelcomePage> {
                 "assets/images/mask_img.png", // Path to your red circle image
                 fit: BoxFit.cover,
                 width: MediaQuery.of(context).size.width, // Ensure it covers the entire width
+              ),
+            ),
+            // Positioned Buttons on the red circle
+            Positioned(
+              bottom: 130, // Increased bottom space to push the buttons further up
+              left: 0,
+              right: 0,
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {}, // Implement navigation to login
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: const Color.fromARGB(255, 255, 17, 0),
+                      backgroundColor: Colors.white,
+                      textStyle: const TextStyle(fontSize: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: const Text("Login"),
+                  ),
+                  const SizedBox(height: 10), // Reduced height from 110 to 10
+                  ElevatedButton(
+                    onPressed: () {}, // Implement navigation to signup
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: const Color.fromARGB(255, 255, 17, 0),
+                      backgroundColor: Colors.white,
+                      textStyle: const TextStyle(fontSize: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: const Text("Signup"),
+                  ),
+                ],
               ),
             ),
           ],
