@@ -12,10 +12,12 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        top: false,  // This disables the top part of the SafeArea
+        bottom: true,
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.45, // Takes 40% of the screen height
+              height: MediaQuery.of(context).size.height * 0.55, // Takes 45% of the screen height
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/images/welcome_img.png"),
@@ -25,8 +27,9 @@ class _WelcomePageState extends State<WelcomePage> {
             ),
             Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start, // Adjusted for text to start higher
                 children: [
+                  const SizedBox(height: 10), // Reduced space to bring text up
                   const Text(
                     "PulsePoint",
                     style: TextStyle(
@@ -43,7 +46,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       color: Color.fromARGB(255, 255, 0, 0),
                     ),
                   ),
-                  const SizedBox(height: 20), // Spacing before the buttons
+                  const SizedBox(height: 30), // Adjusted space before the buttons
                   ElevatedButton(
                     onPressed: () {}, // Implement navigation to login
                     style: ElevatedButton.styleFrom(
