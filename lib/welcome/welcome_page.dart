@@ -12,71 +12,92 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        top: false,  // This disables the top part of the SafeArea
+        top: false, // This disables the top part of the SafeArea
         bottom: true,
-        child: Column(
+        child: Stack(
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.55, // Takes 45% of the screen height
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/welcome_img.png"),
-                  fit: BoxFit.cover, // Ensures it covers the full container
+            Column(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.45, // Takes 45% of the screen height
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/welcome_img.png"),
+                      fit: BoxFit.cover, // Ensures it covers the full container
+                    ),
+                  ),
                 ),
-              ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start, // Adjusted for text to start higher
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 0),
+                          child: Text(
+                            "PulsePoint",
+                          style: TextStyle(
+                          fontSize: 55,
+                          fontWeight: FontWeight.w800,
+                          color: Color.fromARGB(255, 255, 0, 0),
+                        ),
+                      ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 60, vertical: 0), // Reduced vertical padding
+                        child: Text(
+                          "\"Where every drop counts. Join us in saving lives today!\"",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 30), // Adjusted space before the buttons
+                      ElevatedButton(
+                        onPressed: () {}, // Implement navigation to login
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.red,
+                          backgroundColor: Colors.white,
+                          textStyle: const TextStyle(fontSize: 20),
+                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        child: const Text("Login"),
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: () {}, // Implement navigation to signup
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.red,
+                          backgroundColor: Colors.white,
+                          textStyle: const TextStyle(fontSize: 20),
+                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        child: const Text("Signup"),
+                      ),
+                      const SizedBox(height: 50), // Spacing at the bottom
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start, // Adjusted for text to start higher
-                children: [
-                  const SizedBox(height: 10), // Reduced space to bring text up
-                  const Text(
-                    "PulsePoint",
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.w800,
-                      color: Color.fromARGB(255, 255, 0, 0),
-                    ),
-                  ),
-                  const Text(
-                    "\"Where every drop counts. Join us in saving lives today!\"",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                      color: Color.fromARGB(255, 0, 0, 0),
-                    ),
-                  ),
-                  const SizedBox(height: 30), // Adjusted space before the buttons
-                  ElevatedButton(
-                    onPressed: () {}, // Implement navigation to login
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.red,
-                      backgroundColor: Colors.white,
-                      textStyle: const TextStyle(fontSize: 20),
-                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text("Login"),
-                  ),
-                  const SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () {}, // Implement navigation to signup
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.red,
-                      backgroundColor: Colors.white,
-                      textStyle: const TextStyle(fontSize: 20),
-                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text("Signup"),
-                  ),
-                  const SizedBox(height: 50), // Spacing at the bottom
-                ],
+            // Positioned Image at the bottom
+            Positioned(
+              bottom: -150, // Align it to the bottom of the screen
+              left: 0,
+              right: 0,
+              top: 500,
+              child: Image.asset(
+                "assets/images/mask_img.png", // Path to your red circle image
+                fit: BoxFit.cover,
+                width: MediaQuery.of(context).size.width, // Ensure it covers the entire width
               ),
             ),
           ],
