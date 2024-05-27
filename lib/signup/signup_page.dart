@@ -43,8 +43,8 @@ class _SignupPageState extends State<SignupPage> {
             ),
             Positioned(
               top: MediaQuery.of(context).size.height * 0.15, // Adjusted this value to move the form box upwards
-              left: 30,
-              right: 30,
+              left: 25,
+              right: 25,
               child: Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
