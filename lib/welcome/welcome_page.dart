@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pulsepoint/signup/signup_page.dart'; // Ensure this is the correct import path for your SignupPage
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -105,7 +106,12 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                   const SizedBox(height: 15),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SignupPage()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: const Color.fromARGB(255, 0, 0, 0), // New text color for Signup
                       backgroundColor: Colors.white,
