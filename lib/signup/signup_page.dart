@@ -17,7 +17,7 @@ class _SignupPageState extends State<SignupPage> {
         child: Stack(
           children: [
             Positioned(
-              top: -25, // Adjust this value to move the text upwards
+              top: -35, // Adjust this value to move the text upwards
               left: 0,
               right: 0,
               child: Container(
@@ -42,9 +42,9 @@ class _SignupPageState extends State<SignupPage> {
               ),
             ),
             Positioned(
-              top: MediaQuery.of(context).size.height * 0.2,
-              left: 20,
-              right: 20,
+              top: MediaQuery.of(context).size.height * 0.15, // Adjusted this value to move the form box upwards
+              left: 30,
+              right: 30,
               child: Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -81,7 +81,7 @@ class _SignupPageState extends State<SignupPage> {
                             "Signup",
                             style: TextStyle(
                               fontSize: 20,
-                              color: Colors.red,
+                              color: Color.fromRGBO(189, 17, 30, 1),
                             ),
                           ),
                         ),
@@ -138,7 +138,8 @@ class _SignupPageState extends State<SignupPage> {
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
+                        foregroundColor: Colors.white,
+                        backgroundColor: const Color.fromRGBO(189, 17, 30, 1),
                         padding: const EdgeInsets.symmetric(
                             horizontal: 50, vertical: 15),
                         shape: RoundedRectangleBorder(
