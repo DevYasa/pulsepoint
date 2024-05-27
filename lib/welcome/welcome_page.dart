@@ -96,7 +96,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       foregroundColor: const Color.fromARGB(255, 255, 17, 0),
                       backgroundColor: Colors.white,
                       textStyle: const TextStyle(fontSize: 28),
-                      padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
