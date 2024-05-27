@@ -33,8 +33,8 @@ class _WelcomePageState extends State<WelcomePage> {
                   const Text(
                     "PulsePoint",
                     style: TextStyle(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 50,
+                      fontWeight: FontWeight.w800,
                       color: Color.fromARGB(255, 255, 0, 0),
                     ),
                   ),
@@ -42,8 +42,9 @@ class _WelcomePageState extends State<WelcomePage> {
                     "\"Where every drop counts. Join us in saving lives today!\"",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 16,
-                      color: Color.fromARGB(255, 255, 0, 0),
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600,
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                   const SizedBox(height: 30), // Adjusted space before the buttons
