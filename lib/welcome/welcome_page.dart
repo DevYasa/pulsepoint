@@ -19,7 +19,7 @@ class _WelcomePageState extends State<WelcomePage> {
             Column(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.45, // Takes 45% of the screen height
+                  height: MediaQuery.of(context).size.height * 0.42, // Takes 45% of the screen height
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("assets/images/welcome_img.png"),
@@ -62,10 +62,10 @@ class _WelcomePageState extends State<WelcomePage> {
             ),
             // Positioned red circle at the bottom
             Positioned(
-              bottom: -75,
+              bottom: -85,
               left: 0,
               right: 0,
-              top: 485,
+              top: 470,
               child: Image.asset(
                 "assets/images/mask_img.png",
                 fit: BoxFit.cover,
@@ -85,7 +85,7 @@ class _WelcomePageState extends State<WelcomePage> {
             ),
             // Positioned Buttons on the red circle
             Positioned(
-              bottom: 140,
+              bottom: 150,
               left: 0,
               right: 0,
               child: Column(
