@@ -29,7 +29,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
                 const Expanded(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start, // Adjusted for text to start higher
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 50, vertical: 0),
@@ -43,7 +43,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 60, vertical: 0), // Reduced vertical padding
+                        padding: EdgeInsets.symmetric(horizontal: 60, vertical: 0),
                         child: Text(
                           "\"Where every drop counts. Join us in saving lives today!\"",
                           textAlign: TextAlign.center,
@@ -54,52 +54,63 @@ class _WelcomePageState extends State<WelcomePage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 30), // Space before the bottom
+                      SizedBox(height: 30),
                     ],
                   ),
                 ),
               ],
             ),
-            // Positioned Image at the bottom
+            // Positioned red circle at the bottom
             Positioned(
-              bottom: -75, // Align it to the bottom of the screen
+              bottom: -75,
               left: 0,
               right: 0,
-              top: 500,
+              top: 485,
               child: Image.asset(
-                "assets/images/mask_img.png", // Path to your red circle image
+                "assets/images/mask_img.png",
                 fit: BoxFit.cover,
-                width: MediaQuery.of(context).size.width, // Ensure it covers the entire width
+                width: MediaQuery.of(context).size.width,
+              ),
+            ),
+            // Positioned hand image on top of the red circle
+            Positioned(
+              bottom: 0, // Adjust this value based on your visual requirements
+              left: 0,
+              right: 0,
+              child: Image.asset(
+                "assets/images/hand.png",
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.cover,
               ),
             ),
             // Positioned Buttons on the red circle
             Positioned(
-              bottom: 130, // Increased bottom space to push the buttons further up
+              bottom: 140,
               left: 0,
               right: 0,
               child: Column(
                 children: [
                   ElevatedButton(
-                    onPressed: () {}, // Implement navigation to login
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       foregroundColor: const Color.fromARGB(255, 255, 17, 0),
                       backgroundColor: Colors.white,
-                      textStyle: const TextStyle(fontSize: 20),
-                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 0),
+                      textStyle: const TextStyle(fontSize: 28),
+                      padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
                     child: const Text("Login"),
                   ),
-                  const SizedBox(height: 10), // Reduced height from 110 to 10
+                  const SizedBox(height: 15),
                   ElevatedButton(
-                    onPressed: () {}, // Implement navigation to signup
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       foregroundColor: const Color.fromARGB(255, 255, 17, 0),
                       backgroundColor: Colors.white,
-                      textStyle: const TextStyle(fontSize: 20),
-                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                      textStyle: const TextStyle(fontSize: 28),
+                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
