@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SignupPage extends StatefulWidget {
-  const SignupPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +73,7 @@ class _SignupPageState extends State<SignupPage> {
                             "Login",
                             style: TextStyle(
                               fontSize: 20,
-                              color: Colors.black,
+                              color: Color.fromRGBO(189, 17, 30, 1),
                             ),
                           ),
                         ),
@@ -85,7 +85,7 @@ class _SignupPageState extends State<SignupPage> {
                             "Signup",
                             style: TextStyle(
                               fontSize: 20,
-                              color: Color.fromRGBO(189, 17, 30, 1),
+                              color: Colors.black,
                             ),
                           ),
                         ),
@@ -97,34 +97,7 @@ class _SignupPageState extends State<SignupPage> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(30)),
                         ),
-                        labelText: 'Full Name',
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30)),
-                        ),
-                        labelText: 'Age',
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30)),
-                        ),
-                        labelText: 'Blood Type',
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30)),
-                        ),
-                        labelText: 'Email Address',
+                        labelText: 'Enter email address',
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -136,6 +109,20 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         labelText: 'Password',
                         suffixIcon: Icon(Icons.visibility_off),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          "Forgot Password?",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -151,10 +138,11 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                       ),
                       child: const Text(
-                        "Signup",
+                        "Login",
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
