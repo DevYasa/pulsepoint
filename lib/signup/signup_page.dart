@@ -67,7 +67,7 @@ class _SignupPageState extends State<SignupPage> {
                       children: [
                         TextButton(
                           onPressed: () {
-                            Navigator.pop(context);
+                            Navigator.pushNamed(context, '/login');
                           },
                           child: const Text(
                             "Login",
@@ -78,9 +78,7 @@ class _SignupPageState extends State<SignupPage> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
+                          onPressed: () {},
                           child: const Text(
                             "Signup",
                             style: TextStyle(

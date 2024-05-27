@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pop(context);
+                            Navigator.pushNamed(context, '/signup');
                           },
                           child: const Text(
                             "Signup",
@@ -142,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 120),
                   ],
                 ),
               ),
@@ -164,4 +164,10 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+}
+
+void main() {
+  runApp(const MaterialApp(
+    home: LoginPage(),
+  ));
 }
