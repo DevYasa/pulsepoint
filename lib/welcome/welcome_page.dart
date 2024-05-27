@@ -93,7 +93,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: const Color.fromARGB(255, 255, 17, 0),
+                      foregroundColor: const Color.fromARGB(255, 0, 0, 0), // New text color for Login
                       backgroundColor: Colors.white,
                       textStyle: const TextStyle(fontSize: 28),
                       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 10),
@@ -107,7 +107,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: const Color.fromARGB(255, 255, 17, 0),
+                      foregroundColor: const Color.fromARGB(255, 0, 0, 0), // New text color for Signup
                       backgroundColor: Colors.white,
                       textStyle: const TextStyle(fontSize: 28),
                       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 10),
