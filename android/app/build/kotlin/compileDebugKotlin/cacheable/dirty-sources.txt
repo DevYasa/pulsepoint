@@ -1,1 +1,0 @@
-C:\Users\MSI\pulsepoint\android\app\src\main\kotlin\com\example\pulsepoint\MainActivity.kt

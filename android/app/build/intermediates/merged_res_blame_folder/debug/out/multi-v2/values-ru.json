@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.pulsepoint.app-mergeDebugResources-25:/values-ru/values-ru.xml",
+            "outputFile": "com.example.pulsepoint.app-mergeDebugResources-20:/values-ru/values-ru.xml",
             "map": [
-                {
-                    "source": "C:\\Users\\MSI\\.gradle\\caches\\transforms-3\\c3e05c9fbf3e6c63974105ad6d97e1f5\\transformed\\jetified-play-services-basement-18.3.0\\res\\values-ru\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "152",
-                        "endOffsets": "347"
-                    },
-                    "to": {
-                        "startLines": "9",
-                        "startColumns": "4",
-                        "startOffsets": "782",
-                        "endColumns": "156",
-                        "endOffsets": "934"
-                    }
-                },
                 {
                     "source": "C:\\Users\\MSI\\.gradle\\caches\\transforms-3\\0b9c903fef8d2eb2a269c36999ef4a74\\transformed\\core-1.10.1\\res\\values-ru\\values-ru.xml",
                     "from": {
@@ -28,13 +11,6 @@
                         "startOffsets": "55,153,255,356,457,562,665,782",
                         "endColumns": "97,101,100,100,104,102,116,100",
                         "endOffsets": "148,250,351,452,557,660,777,878"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,10",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,153,255,356,457,562,665,939",
-                        "endColumns": "97,101,100,100,104,102,116,100",
-                        "endOffsets": "148,250,351,452,557,660,777,1035"
                     }
                 }
             ]
