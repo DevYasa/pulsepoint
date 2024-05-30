@@ -1,13 +1,15 @@
 import 'dart:io'; // For File
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart'; // For ImagePicker and XFile
+import 'package:image_picker/image_picker.dart';
+import 'package:pulsepoint/home_screen/bloodbank_history_screen.dart';
+import 'package:pulsepoint/home_screen/home_screen.dart'; // For ImagePicker and XFile
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Blood Donation'),
+        title: Text('                       PulsePoint'),
         actions: [
           IconButton(
             icon: Icon(Icons.search),
@@ -29,6 +31,15 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 20),
             EmergencyBar(),
             SizedBox(height: 20),
+            Text(
+              'Services',
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20),
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
@@ -36,26 +47,39 @@ class HomePage extends StatelessWidget {
                   ServiceTile(
                     title: 'Need a Donor',
                     onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => BloodBankHistoryScreen()));
                       // Navigate to need a donor page
                     },
+                    backgroundColor: Color.fromARGB(
+                        255, 243, 71, 71), // Red background color
+                    textColor: Colors.white, // White text color
                   ),
                   ServiceTile(
                     title: 'Donate Blood',
                     onTap: () {
                       // Navigate to donate blood page
                     },
+                    backgroundColor: Color.fromARGB(255, 187, 57, 57),
+                    textColor: Colors.white,
                   ),
                   ServiceTile(
-                    title: 'Body Checkup',
+                    title: 'Search Blood',
                     onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => HomeScreen()));
                       // Navigate to body checkup page
                     },
+                    backgroundColor: Color.fromARGB(255, 148, 98, 98),
+                    textColor: Colors.white,
                   ),
                   ServiceTile(
                     title: 'Assistance',
                     onTap: () {
                       // Navigate to assistance page
                     },
+                    backgroundColor: Color.fromARGB(255, 133, 48, 48),
+                    textColor: Colors.white,
                   ),
                 ],
               ),
@@ -82,6 +106,10 @@ class HomePage extends StatelessWidget {
             label: 'Profile',
           ),
         ],
+        selectedItemColor:
+            Color.fromARGB(255, 255, 102, 102), // Light red for selected icon
+        unselectedItemColor:
+            Color.fromARGB(255, 255, 204, 204), // Lighter red for unselected
       ),
     );
   }
@@ -125,7 +153,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
               right: 0,
               child: Icon(
                 Icons.edit,
-                color: Colors.white,
+                color: Colors.red,
               ),
             ),
           ],
@@ -158,19 +186,31 @@ class EmergencyBar extends StatelessWidget {
 class ServiceTile extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
+  final Color backgroundColor;
+  final Color textColor;
 
-  const ServiceTile({required this.title, required this.onTap});
+  const ServiceTile({
+    required this.title,
+    required this.onTap,
+    this.backgroundColor = Colors.white,
+    this.textColor = Colors.black,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Card(
+        color: backgroundColor,
+        margin: EdgeInsets.all(10),
         elevation: 2,
         child: Center(
           child: Text(
             title,
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(
+              fontSize: 20,
+              color: textColor,
+            ),
           ),
         ),
       ),
