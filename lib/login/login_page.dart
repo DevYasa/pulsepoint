@@ -42,7 +42,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Positioned(
-              top: MediaQuery.of(context).size.height * 0.15, // Adjusted this value to move the form box upwards
+              top: MediaQuery.of(context).size.height *
+                  0.15, // Adjusted this value to move the form box upwards
               left: 25,
               right: 25,
               child: Container(
