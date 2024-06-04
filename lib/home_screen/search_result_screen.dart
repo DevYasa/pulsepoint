@@ -11,11 +11,13 @@ class SearchResult extends StatelessWidget {
     'Downtown Medical Facility',
   ];
 
+  SearchResult({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search Results'),
+        title: const Text('Search Results'),
       ),
       body: ListView.builder(
         itemCount: hospitals.length,
@@ -23,7 +25,7 @@ class SearchResult extends StatelessWidget {
           return ListTile(
             title: Text(
               hospitals[index],
-              style: TextStyle(color: Colors.red), // Change text color to red
+              style: const TextStyle(color: Colors.red), // Change text color to red
             ),
           );
         },
