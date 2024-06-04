@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../home/home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -28,10 +29,13 @@ class _LoginPageState extends State<LoginPage> {
           email: _emailController.text,
           password: _passwordController.text,
         );
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Login successful')),
+        Navigator.pushReplacement(
+          // ignore: use_build_context_synchronously
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
         );
       } on FirebaseAuthException catch (e) {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Failed to sign in: ${e.message}')),
         );
@@ -73,7 +77,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Positioned(
-              top: MediaQuery.of(context).size.height * 0.15,
+              top: MediaQuery.of(context).size.height *
+                  0.15, // Adjusted this value to move the form box upwards
               left: 25,
               right: 25,
               child: Container(
