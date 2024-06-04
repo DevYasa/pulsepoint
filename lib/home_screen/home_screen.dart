@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => RequestScreen()));
+                          builder: (context) => const RequestScreen()));
                     },
                   ),
                   const Divider(
@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => RaiseRequestScreen()));
+                          builder: (context) => const RaiseRequestScreen()));
                     },
                   ),
                   const Divider(
@@ -170,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       value: items,
                       child: Text(
                         items,
-                        style: TextStyle(fontSize: 19),
+                        style: const TextStyle(fontSize: 19),
                       ),
                     );
                   }).toList(),
@@ -333,7 +333,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => SearchResult()));
                     },
-                    icon: Icon(Icons.search),
+                    icon: const Icon(Icons.search),
                     iconSize: 80,
                     splashColor: Colors.grey,
                   )

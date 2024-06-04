@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
                     title: 'Need a Donor',
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => BloodBankHistoryScreen()));
+                          builder: (context) => const BloodBankHistoryScreen()));
                       // Navigate to need a donor page
                     },
                     backgroundColor: const Color.fromARGB(
