@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -16,10 +18,42 @@ class _SignupPageState extends State<SignupPage> {
   String? _selectedBloodType;
   String? _selectedLocation;
 
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   void _togglePasswordVisibility() {
     setState(() {
       _obscureText = !_obscureText;
     });
+  }
+
+  void _signup() async {
+    if (_formKey.currentState!.validate()) {
+      try {
+        // ignore: unused_local_variable
+        UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text,
+          password: _passwordController.text,
+        );
+        // Navigate to home page after successful signup
+        // ignore: use_build_context_synchronously
+        Navigator.pushReplacementNamed(context, '/home');
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          if (kDebugMode) {
+            print('The password provided is too weak.');
+          }
+        } else if (e.code == 'email-already-in-use') {
+          if (kDebugMode) {
+            print('The account already exists for that email.');
+          }
+        }
+      } catch (e) {
+        if (kDebugMode) {
+          print(e);
+        }
+      }
+    }
   }
 
   @override
@@ -193,6 +227,7 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       const SizedBox(height: 10),
                       TextFormField(
+                        controller: _emailController,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -210,6 +245,7 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       const SizedBox(height: 10),
                       TextFormField(
+                        controller: _passwordController,
                         obscureText: _obscureText,
                         decoration: InputDecoration(
                           border: const OutlineInputBorder(
@@ -234,11 +270,7 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       const SizedBox(height: 20),
                       ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            // Process data
-                          }
-                        },
+                        onPressed: _signup,
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
                           backgroundColor: const Color.fromRGBO(189, 17, 30, 1),
