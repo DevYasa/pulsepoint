@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Row(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             backgroundImage: AssetImage('assets/images/profile.jpg'),
             radius: 30,
           ),
@@ -119,9 +119,9 @@ class HomePage extends StatelessWidget {
               children: [
                 const Icon(Icons.local_hospital, size: 40),
                 const SizedBox(width: 10),
-                Column(
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text('Matara', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                     Text('Asiri Hospital, 2 km away\nRequested 25 min ago'),
                   ],
