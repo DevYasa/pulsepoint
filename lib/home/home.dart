@@ -204,14 +204,15 @@ class HomePage extends StatelessWidget {
 
   Widget _buildBottomNavigationBar() {
     return BottomNavigationBar(
+      backgroundColor: const Color.fromRGBO(189, 17, 30, 1),
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.history), label: 'My donations'),
         BottomNavigationBarItem(icon: Icon(Icons.local_hospital), label: 'Blood banks'),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
       ],
-      selectedItemColor: Colors.red,
-      unselectedItemColor: Colors.grey,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.white70,
       onTap: (index) {
         // Handle bottom navigation item tap
       },
