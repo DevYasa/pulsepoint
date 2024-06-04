@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="gcm_defaultSenderId" translatable="false">140756837530</string>
-    <string name="google_api_key" translatable="false">AIzaSyBqL82WLrHNTCao5qFf8X_yu7yC-IaquvM</string>
-    <string name="google_app_id" translatable="false">1:140756837530:android:65c05cb1d3d3fe6229eb23</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBqL82WLrHNTCao5qFf8X_yu7yC-IaquvM</string>
-    <string name="google_storage_bucket" translatable="false">pulsepoint-ca08c.appspot.com</string>
-    <string name="project_id" translatable="false">pulsepoint-ca08c</string>
-</resources>
