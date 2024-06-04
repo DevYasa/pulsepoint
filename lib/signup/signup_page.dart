@@ -11,6 +11,11 @@ class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
 
+  final List<String> _bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+  final List<String> _locations = ['Southern', 'Western', 'Central', 'Eastern','Uva','North','North Central','Sabragamuwa','North Western'];
+  String? _selectedBloodType;
+  String? _selectedLocation;
+
   void _togglePasswordVisibility() {
     setState(() {
       _obscureText = !_obscureText;
@@ -133,13 +138,25 @@ class _SignupPageState extends State<SignupPage> {
                         },
                       ),
                       const SizedBox(height: 10),
-                      TextFormField(
+                      DropdownButtonFormField<String>(
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                           ),
                           labelText: 'Blood Type',
                         ),
+                        value: _selectedBloodType,
+                        onChanged: (newValue) {
+                          setState(() {
+                            _selectedBloodType = newValue;
+                          });
+                        },
+                        items: _bloodTypes.map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please select your blood type';
@@ -148,16 +165,28 @@ class _SignupPageState extends State<SignupPage> {
                         },
                       ),
                       const SizedBox(height: 10),
-                      TextFormField(
+                      DropdownButtonFormField<String>(
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                           ),
                           labelText: 'Location',
                         ),
+                        value: _selectedLocation,
+                        onChanged: (newValue) {
+                          setState(() {
+                            _selectedLocation = newValue;
+                          });
+                        },
+                        items: _locations.map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please select your Location';
+                            return 'Please select your location';
                           }
                           return null;
                         },
