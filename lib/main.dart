@@ -7,8 +7,13 @@ import 'package:pulsepoint/home/home.dart';
 //import 'package:pulsepoint/home/donate_blood_page.dart';
 import 'package:pulsepoint/home_screen/home_screen.dart';
 import 'package:pulsepoint/welcome/welcome_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async{
+  await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const MyApp());
 }
 
