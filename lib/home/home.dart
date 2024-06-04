@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('                       PulsePoint'),
+        title: const Text('                       PulsePoint'),
         actions: [
           IconButton(
             icon: Icon(Icons.search),
