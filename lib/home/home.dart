@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -35,8 +34,8 @@ class HomePage extends StatelessWidget {
           ),
           const SizedBox(width: 10),
           Expanded(
-            child: FutureBuilder<DocumentSnapshot>(
-              future: _getUserInfo(),
+            child: FutureBuilder<User?>(
+              future: _getCurrentUser(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Text(
@@ -49,9 +48,9 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   );
                 } else if (snapshot.hasData) {
-                  var userData = snapshot.data!.data() as Map<String, dynamic>;
+                  final user = snapshot.data;
                   return Text(
-                    'Hello,\n${userData['fullName']}',
+                    'Hello,\n${user?.displayName ?? 'User'}',
                     style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   );
                 } else {
@@ -74,9 +73,8 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Future<DocumentSnapshot> _getUserInfo() async {
-    User? user = FirebaseAuth.instance.currentUser;
-    return FirebaseFirestore.instance.collection('users').doc(user?.uid).get();
+  Future<User?> _getCurrentUser() async {
+    return FirebaseAuth.instance.currentUser;
   }
 
   Widget _buildSearchBar() {
@@ -242,7 +240,7 @@ class HomePage extends StatelessWidget {
       ],
       selectedItemColor: Colors.red,
       unselectedItemColor: Colors.grey,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.red,
       onTap: (index) {
         // Handle bottom navigation item tap
       },

@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -12,14 +11,6 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-  final TextEditingController _fullNameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _ageController = TextEditingController();
-
   bool _obscureText = true;
 
   final List<String> _bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
@@ -27,38 +18,40 @@ class _SignupPageState extends State<SignupPage> {
   String? _selectedBloodType;
   String? _selectedLocation;
 
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   void _togglePasswordVisibility() {
     setState(() {
       _obscureText = !_obscureText;
     });
   }
 
-  Future<void> _signup() async {
+  void _signup() async {
     if (_formKey.currentState!.validate()) {
       try {
-        UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim(),
+        // ignore: unused_local_variable
+        UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text,
+          password: _passwordController.text,
         );
-
-        User? user = userCredential.user;
-        if (user != null) {
-          await _firestore.collection('users').doc(user.uid).set({
-            'fullName': _fullNameController.text.trim(),
-            'email': _emailController.text.trim(),
-            'age': _ageController.text.trim(),
-            'bloodType': _selectedBloodType,
-            'location': _selectedLocation,
-          });
-
-          // ignore: use_build_context_synchronously
-          Navigator.pushNamed(context, '/home');
+        // Navigate to home page after successful signup
+        // ignore: use_build_context_synchronously
+        Navigator.pushReplacementNamed(context, '/home');
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          if (kDebugMode) {
+            print('The password provided is too weak.');
+          }
+        } else if (e.code == 'email-already-in-use') {
+          if (kDebugMode) {
+            print('The account already exists for that email.');
+          }
         }
       } catch (e) {
         if (kDebugMode) {
           print(e);
         }
-        // Show error message
       }
     }
   }
@@ -72,7 +65,7 @@ class _SignupPageState extends State<SignupPage> {
         child: Stack(
           children: [
             Positioned(
-              top: -35,
+              top: -35, // Adjust this value to move the text upwards
               left: 0,
               right: 0,
               child: Container(
@@ -97,7 +90,7 @@ class _SignupPageState extends State<SignupPage> {
               ),
             ),
             Positioned(
-              top: MediaQuery.of(context).size.height * 0.15,
+              top: MediaQuery.of(context).size.height * 0.15, // Adjusted this value to move the form box upwards
               left: 25,
               right: 25,
               child: Container(
@@ -148,7 +141,6 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       const SizedBox(height: 10),
                       TextFormField(
-                        controller: _fullNameController,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -164,7 +156,6 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       const SizedBox(height: 10),
                       TextFormField(
-                        controller: _ageController,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
