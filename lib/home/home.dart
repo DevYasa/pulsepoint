@@ -5,6 +5,8 @@ import 'package:pulsepoint/home_screen/bloodbank_history_screen.dart';
 import 'package:pulsepoint/home_screen/home_screen.dart'; // For ImagePicker and XFile
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +14,7 @@ class HomePage extends StatelessWidget {
         title: const Text('                       PulsePoint'),
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () {
               showSearch(
                 context: context,
@@ -26,12 +28,12 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
-            UserProfileWidget(),
-            SizedBox(height: 20),
-            EmergencyBar(),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const UserProfileWidget(),
+            const SizedBox(height: 20),
+            const EmergencyBar(),
+            const SizedBox(height: 20),
+            const Text(
               'Services',
               style: TextStyle(
                 fontSize: 24,
@@ -39,7 +41,7 @@ class HomePage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
@@ -51,7 +53,7 @@ class HomePage extends StatelessWidget {
                           builder: (context) => BloodBankHistoryScreen()));
                       // Navigate to need a donor page
                     },
-                    backgroundColor: Color.fromARGB(
+                    backgroundColor: const Color.fromARGB(
                         255, 243, 71, 71), // Red background color
                     textColor: Colors.white, // White text color
                   ),
@@ -60,17 +62,17 @@ class HomePage extends StatelessWidget {
                     onTap: () {
                       // Navigate to donate blood page
                     },
-                    backgroundColor: Color.fromARGB(255, 187, 57, 57),
+                    backgroundColor: const Color.fromARGB(255, 187, 57, 57),
                     textColor: Colors.white,
                   ),
                   ServiceTile(
                     title: 'Search Blood',
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HomeScreen()));
+                          builder: (context) => const HomeScreen()));
                       // Navigate to body checkup page
                     },
-                    backgroundColor: Color.fromARGB(255, 148, 98, 98),
+                    backgroundColor: const Color.fromARGB(255, 148, 98, 98),
                     textColor: Colors.white,
                   ),
                   ServiceTile(
@@ -78,7 +80,7 @@ class HomePage extends StatelessWidget {
                     onTap: () {
                       // Navigate to assistance page
                     },
-                    backgroundColor: Color.fromARGB(255, 133, 48, 48),
+                    backgroundColor: const Color.fromARGB(255, 133, 48, 48),
                     textColor: Colors.white,
                   ),
                 ],
@@ -88,7 +90,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -107,16 +109,19 @@ class HomePage extends StatelessWidget {
           ),
         ],
         selectedItemColor:
-            Color.fromARGB(255, 255, 102, 102), // Light red for selected icon
+            const Color.fromARGB(255, 255, 102, 102), // Light red for selected icon
         unselectedItemColor:
-            Color.fromARGB(255, 255, 204, 204), // Lighter red for unselected
+            const Color.fromARGB(255, 255, 204, 204), // Lighter red for unselected
       ),
     );
   }
 }
 
 class UserProfileWidget extends StatefulWidget {
+  const UserProfileWidget({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _UserProfileWidgetState createState() => _UserProfileWidgetState();
 }
 
@@ -127,7 +132,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
   @override
   void initState() {
     super.initState();
-    _imageProvider = AssetImage('assets/images/bgimage.jpg');
+    _imageProvider = const AssetImage('assets/images/bgimage.jpg');
   }
 
   Future<void> _pickImage() async {
@@ -146,7 +151,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
       child: CircleAvatar(
         radius: 50,
         backgroundImage: _imageProvider,
-        child: Stack(
+        child: const Stack(
           children: [
             Positioned(
               bottom: 0,
@@ -164,12 +169,14 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
 }
 
 class EmergencyBar extends StatelessWidget {
+  const EmergencyBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       color: Colors.red,
-      child: Row(
+      child: const Row(
         children: [
           Icon(Icons.warning, color: Colors.white),
           SizedBox(width: 10),
@@ -189,7 +196,7 @@ class ServiceTile extends StatelessWidget {
   final Color backgroundColor;
   final Color textColor;
 
-  const ServiceTile({
+  const ServiceTile({super.key, 
     required this.title,
     required this.onTap,
     this.backgroundColor = Colors.white,
@@ -202,7 +209,7 @@ class ServiceTile extends StatelessWidget {
       onTap: onTap,
       child: Card(
         color: backgroundColor,
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         elevation: 2,
         child: Center(
           child: Text(
@@ -224,7 +231,7 @@ class CustomSearchDelegate extends SearchDelegate<String> {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: const Icon(Icons.clear),
         onPressed: () {
           query = '';
         },
@@ -235,7 +242,7 @@ class CustomSearchDelegate extends SearchDelegate<String> {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
       onPressed: () {
         close(context, '');
       },
