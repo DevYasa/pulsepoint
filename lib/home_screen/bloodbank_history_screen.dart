@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'bloodbank_history_screen.dart';
-
+// ignore: must_be_immutable
 class BloodBankHistoryScreen extends StatefulWidget {
-  BloodBankHistoryScreen({Key? key}) : super(key: key);
+  const BloodBankHistoryScreen({super.key});
 
   @override
-  TextEditingController _date = TextEditingController();
   State<BloodBankHistoryScreen> createState() => BloodBankHistoryScreenState();
 }
 
@@ -22,13 +20,13 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
           backgroundColor: Colors.red,
           actions: <Widget>[
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.logout,
                 color: Colors.white,
               ),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => BloodBankHistoryScreen()));
+                    builder: (context) => const BloodBankHistoryScreen()));
               },
             )
           ],
@@ -36,13 +34,13 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
         body: SafeArea(
             child: Padding(
           padding: const EdgeInsets.all(40),
-          child: Container(
+          child: SizedBox(
               width: double.infinity,
               height: double.infinity,
               child: SingleChildScrollView(
                 child: Column(children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12),
+                  const Padding(
+                    padding: EdgeInsets.all(12),
                     child: Text(
                       'Blood Bank History',
                       textAlign: TextAlign.center,
@@ -56,8 +54,8 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
                     image: AssetImage('assets/images/bgimage.jpg'),
                     height: 150,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
+                  const Padding(
+                    padding: EdgeInsets.all(15.0),
                     child: Text(
                       'General Hospital Blood Bank',
                       textAlign: TextAlign.center,
@@ -67,11 +65,11 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -102,8 +100,8 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -134,8 +132,8 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -166,8 +164,8 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -199,7 +197,7 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(30.0, 130.0, 30, 10.0),
+                    padding: const EdgeInsets.fromLTRB(30.0, 130.0, 30, 10.0),
                     child: SizedBox(
                       height: 50,
                       width: 250,
@@ -208,7 +206,7 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
                             backgroundColor:
                                 MaterialStateProperty.all<Color>(Colors.red),
                           ),
-                          child: Text(
+                          child: const Text(
                             'Go Back',
                             style: TextStyle(fontSize: 20),
                           ),
