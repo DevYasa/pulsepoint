@@ -1,6 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-// import 'dart:ui';
-
 import 'package:pulsepoint/home_screen/bloodbank_history_screen.dart';
 import 'package:pulsepoint/home_screen/donor_login_screen.dart';
 import 'package:pulsepoint/home_screen/raise_request_screen.dart';
@@ -9,32 +6,14 @@ import 'package:pulsepoint/home_screen/search_result_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //  void Donor_login_screen() {
-  //   // Method implementation
-  // }
 
-  // void Bloodbank_login_screen() {
-  //   // Method implementation
-  // }
-
-  // void Requests_screen() {
-  //   // Method implementation
-  // }
-
-  // void Raise_request_screen() {
-  //   // Method implementation
-  // }
-
-  // void Search_result_screen() {
-  //   // Method implementation
-  // }
   String dropdownvalue = 'Select Hospital';
 
   var items = [
@@ -63,21 +42,21 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
-                  Image(
+                  const Image(
                     image: AssetImage('assets/images/bgimage.jpg'),
                     height: 180,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
-                  Divider(
+                  const Divider(
                     color: Colors.white,
                   ),
                   ListTile(
-                    title: Text(
+                    title: const Text(
                       '- View Availability',
                       style: TextStyle(
                           fontSize: 28,
@@ -86,14 +65,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => DonorLoginScreen()));
+                          builder: (context) => const DonorLoginScreen()));
                     },
                   ),
-                  Divider(
+                  const Divider(
                     color: Colors.white,
                   ),
                   ListTile(
-                    title: Text(
+                    title: const Text(
                       '- View History',
                       style: TextStyle(
                           fontSize: 28,
@@ -102,14 +81,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => BloodBankHistoryScreen()));
+                          builder: (context) => const BloodBankHistoryScreen()));
                     },
                   ),
-                  Divider(
+                  const Divider(
                     color: Colors.white,
                   ),
                   ListTile(
-                    title: Text(
+                    title: const Text(
                       '- Blood Bank',
                       style: TextStyle(
                           fontSize: 28,
@@ -121,11 +100,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           builder: (context) => RequestScreen()));
                     },
                   ),
-                  Divider(
+                  const Divider(
                     color: Colors.white,
                   ),
                   ListTile(
-                    title: Text(
+                    title: const Text(
                       '- Request',
                       style: TextStyle(
                           fontSize: 28,
@@ -137,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           builder: (context) => RaiseRequestScreen()));
                     },
                   ),
-                  Divider(
+                  const Divider(
                     color: Colors.white,
                   ),
                 ],
@@ -161,9 +140,9 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 20,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Text(
                   'PULSEPOINT SEARCH',
                   style: TextStyle(
@@ -174,16 +153,16 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             const SizedBox(height: 30),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * .89,
               child: DropdownButtonHideUnderline(
                 child: DropdownButtonFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15)))),
                   hint: Text(
                     dropdownvalue,
-                    style: TextStyle(fontSize: 19),
+                    style: const TextStyle(fontSize: 19),
                   ),
                   icon: const Icon(Icons.keyboard_arrow_down),
                   items: items.map((String items) {
@@ -203,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Row(
@@ -214,14 +193,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 70,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.red),
+                    ),
+                    child: const Text(
                       'A+',
                       style: TextStyle(fontSize: 23),
                     ),
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.red),
-                    ),
                   ),
                 ),
                 SizedBox(
@@ -229,14 +208,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 70,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.red),
+                    ),
+                    child: const Text(
                       'B+',
                       style: TextStyle(fontSize: 23),
                     ),
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.red),
-                    ),
                   ),
                 ),
                 SizedBox(
@@ -244,14 +223,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 70,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.red),
+                    ),
+                    child: const Text(
                       'AB+',
                       style: TextStyle(fontSize: 20),
                     ),
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.red),
-                    ),
                   ),
                 ),
                 SizedBox(
@@ -259,19 +238,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 70,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
-                      'O+',
-                      style: TextStyle(fontSize: 23),
-                    ),
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.red),
+                    ),
+                    child: const Text(
+                      'O+',
+                      style: TextStyle(fontSize: 23),
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             Row(
@@ -282,14 +261,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 70,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.red),
+                    ),
+                    child: const Text(
                       'A-',
                       style: TextStyle(fontSize: 23),
                     ),
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.red),
-                    ),
                   ),
                 ),
                 SizedBox(
@@ -297,14 +276,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 70,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.red),
+                    ),
+                    child: const Text(
                       'B-',
                       style: TextStyle(fontSize: 23),
                     ),
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.red),
-                    ),
                   ),
                 ),
                 SizedBox(
@@ -312,14 +291,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 70,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.red),
+                    ),
+                    child: const Text(
                       'AB-',
                       style: TextStyle(fontSize: 23),
                     ),
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.red),
-                    ),
                   ),
                 ),
                 SizedBox(
@@ -327,19 +306,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 70,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
-                      'O-',
-                      style: TextStyle(fontSize: 23),
-                    ),
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.red),
+                    ),
+                    child: const Text(
+                      'O-',
+                      style: TextStyle(fontSize: 23),
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Card(
