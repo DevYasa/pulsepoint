@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -32,10 +34,33 @@ class HomePage extends StatelessWidget {
             radius: 30,
           ),
           const SizedBox(width: 10),
-          const Expanded(
-            child: Text(
-              'Hello,\nMohamed Yasir',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          Expanded(
+            child: FutureBuilder<DocumentSnapshot>(
+              future: _getUserInfo(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Text(
+                    'Hello,\nLoading...',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  );
+                } else if (snapshot.hasError) {
+                  return const Text(
+                    'Hello,\nError',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  );
+                } else if (snapshot.hasData) {
+                  var userData = snapshot.data!.data() as Map<String, dynamic>;
+                  return Text(
+                    'Hello,\n${userData['fullName']}',
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  );
+                } else {
+                  return const Text(
+                    'Hello,\nGuest',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  );
+                }
+              },
             ),
           ),
           IconButton(
@@ -47,6 +72,11 @@ class HomePage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<DocumentSnapshot> _getUserInfo() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    return FirebaseFirestore.instance.collection('users').doc(user?.uid).get();
   }
 
   Widget _buildSearchBar() {
@@ -212,6 +242,7 @@ class HomePage extends StatelessWidget {
       ],
       selectedItemColor: Colors.red,
       unselectedItemColor: Colors.grey,
+      backgroundColor: Colors.white,
       onTap: (index) {
         // Handle bottom navigation item tap
       },
