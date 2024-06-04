@@ -9,6 +9,13 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
+  bool _obscureText = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +142,22 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter your blood type';
+                            return 'Please select your blood type';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          labelText: 'Location',
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please select your Location';
                           }
                           return null;
                         },
@@ -159,13 +181,18 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       const SizedBox(height: 10),
                       TextFormField(
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
+                        obscureText: _obscureText,
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                           ),
                           labelText: 'Password',
-                          suffixIcon: Icon(Icons.visibility_off),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _obscureText ? Icons.visibility_off : Icons.visibility,
+                            ),
+                            onPressed: _togglePasswordVisibility,
+                          ),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -201,7 +228,7 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
