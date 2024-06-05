@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:pulsepoint/home_screen/bloodbank_history_screen.dart'; // Make sure to import your new screen
+import 'package:pulsepoint/home_screen/bloodbank_history_screen.dart';
+import 'package:pulsepoint/home/donate_blood_page.dart';
+import 'package:pulsepoint/home_screen/requests_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,7 +18,7 @@ class HomePage extends StatelessWidget {
             _buildSearchBar(),
             _buildDonationEligibility(),
             _buildEmergencySection(),
-            _buildServicesSection(),
+            _buildServicesSection(context), // Pass context here
           ],
         ),
       ),
@@ -172,7 +174,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildServicesSection() {
+  Widget _buildServicesSection(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -196,10 +198,10 @@ class HomePage extends StatelessWidget {
                 crossAxisCount: 2,
                 childAspectRatio: 3 / 2,
                 children: [
-                  _buildServiceCard(Icons.search, 'need a\nBlood donor'),
-                  _buildServiceCard(Icons.favorite, 'I want to\nDonate Blood'),
-                  _buildServiceCard(Icons.medical_services, 'I want my\nBody Checkup'),
-                  _buildServiceCard(Icons.help, 'Help?\nAssistance'),
+                  _buildServiceCard(context, Icons.search, 'Need a\nBlood donor'),
+                  _buildServiceCard(context, Icons.favorite, 'I want to\nDonate Blood', navigateToDonateBlood: true), // Pass navigation flag here
+                  _buildServiceCard(context, Icons.medical_services, 'I want my\nBody Checkup'),
+                  _buildServiceCard(context, Icons.help, 'Help?\nAssistance'),
                 ],
               ),
             ),
@@ -209,23 +211,33 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildServiceCard(IconData icon, String text) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 40, color: const Color.fromRGBO(189, 17, 30, 1)),
-            const SizedBox(height: 10),
-            Text(
-              text,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ],
+  Widget _buildServiceCard(BuildContext context, IconData icon, String text, {bool navigateToDonateBlood = false}) {
+    return GestureDetector(
+      onTap: () {
+        if (navigateToDonateBlood) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const DonateBloodPage()),
+          );
+        }
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 40, color: const Color.fromRGBO(189, 17, 30, 1)),
+              const SizedBox(height: 10),
+              Text(
+                text,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -256,7 +268,7 @@ class HomePage extends StatelessWidget {
           case 2:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const BloodBankHistoryScreen()),
+              MaterialPageRoute(builder: (context) => const RequestScreen()),
             );
             break;
           case 3:
