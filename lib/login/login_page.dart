@@ -43,6 +43,28 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  Future<void> _resetPassword() async {
+    if (_emailController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter your email to reset password')),
+      );
+      return;
+    }
+
+    try {
+      await _auth.sendPasswordResetEmail(email: _emailController.text);
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Password reset email sent')),
+      );
+    } on FirebaseAuthException catch (e) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to send reset email: ${e.message}')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,7 +198,7 @@ class _LoginPageState extends State<LoginPage> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: _resetPassword,
                           child: const Text(
                             "Forgot Password?",
                             style: TextStyle(
