@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:intl/intl.dart'; // For date formatting
+// For date formatting
 
 class OrganizeCamps extends StatefulWidget {
   const OrganizeCamps({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _OrganizeCampsState createState() => _OrganizeCampsState();
 }
 
@@ -16,6 +16,7 @@ class _OrganizeCampsState extends State<OrganizeCamps> {
   final TextEditingController _venueController = TextEditingController();
   String _generatedPoster = '';
 
+  // ignore: non_constant_identifier_names
   get DateFormat => null;
 
   Future<void> _selectDate(
@@ -38,10 +39,7 @@ class _OrganizeCampsState extends State<OrganizeCamps> {
       // You can replace this with the logic to generate the poster
       setState(() {
         _generatedPoster =
-            'Saving Lives One Drop at a Time: \n     Join Us in Donating Blood!\n\n\n' +
-                '          Start Date: ${_startDateController.text}\n' +
-                '          End Date: ${_endDateController.text}\n' +
-                '          Venue: ${_venueController.text}';
+            'Saving Lives One Drop at a Time: \n     Join Us in Donating Blood!\n\n\n          Start Date: ${_startDateController.text}\n          End Date: ${_endDateController.text}\n          Venue: ${_venueController.text}';
       });
 
       // Clear the text fields after generating poster
@@ -123,7 +121,7 @@ class _OrganizeCampsState extends State<OrganizeCamps> {
                     }
                     return null;
                   },
-                  style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                  style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
@@ -148,24 +146,24 @@ class _OrganizeCampsState extends State<OrganizeCamps> {
                     }
                     return null;
                   },
-                  style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                  style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: _generatePoster,
-                  child: const Text('Generate',
-                      style: TextStyle(color: Colors.white)),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor: Color.fromARGB(255, 137, 13, 4),
+                    backgroundColor: const Color.fromARGB(255, 137, 13, 4),
                   ),
+                  child: const Text('Generate',
+                      style: TextStyle(color: Colors.white)),
                 ),
                 if (_generatedPoster.isNotEmpty)
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    padding: EdgeInsets.all(16.0),
+                    margin: const EdgeInsets.symmetric(vertical: 20.0),
+                    padding: const EdgeInsets.all(16.0),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 188, 191, 181),
+                      color: const Color.fromARGB(255, 188, 191, 181),
                       borderRadius: BorderRadius.circular(8.0),
                       border: Border.all(color: Colors.white, width: 2.0),
                     ),
@@ -173,12 +171,12 @@ class _OrganizeCampsState extends State<OrganizeCamps> {
                       children: [
                         Text(
                           _generatedPoster,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16.0,
                               color: Color.fromARGB(255, 136, 13, 4),
                               fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         Image.asset('assets/images/hand.png',
                             height: 200, width: 200),
                       ],

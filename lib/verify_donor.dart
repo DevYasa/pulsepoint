@@ -4,6 +4,7 @@ class VerifyDonor extends StatefulWidget {
   const VerifyDonor({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _VerifyDonorState createState() => _VerifyDonorState();
 }
 
@@ -36,10 +37,12 @@ class _VerifyDonorState extends State<VerifyDonor> {
 
     if ((username == 'admin' && password == 'admin123') ||
         (username == 'user' && password == 'user123')) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Successful verification and login')),
       );
     } else {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Wrong username or password')),
       );
