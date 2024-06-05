@@ -107,9 +107,17 @@ class HomePage extends StatelessWidget {
           color: Colors.pink[50],
           borderRadius: BorderRadius.circular(16),
         ),
-        child: const Text(
-          '0 days Left\nYou are now eligible for donate blood!',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        child: const Row(
+          children: [
+            Icon(Icons.check_circle, color: Colors.green),
+            SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                '0 days Left\nYou are now eligible for donate blood!',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
         ),
       ),
     );
