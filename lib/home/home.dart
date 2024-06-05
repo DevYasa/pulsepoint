@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pulsepoint/home_screen/bloodbank_history_screen.dart';
 import 'package:pulsepoint/home/donate_blood_page.dart';
 import 'package:pulsepoint/home_screen/requests_screen.dart';
+import 'package:pulsepoint/login/login_page.dart'; // Import your login page
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildHeader(),
+            _buildHeader(context), // Pass context here
             _buildSearchBar(),
             _buildDonationEligibility(),
             _buildEmergencySection(),
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
@@ -66,9 +67,14 @@ class HomePage extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: () {
-              // Handle notification button press
+            icon: const Icon(Icons.logout),
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              Navigator.pushReplacement(
+                // ignore: use_build_context_synchronously
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
             },
           ),
         ],
