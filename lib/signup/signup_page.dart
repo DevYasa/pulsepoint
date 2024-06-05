@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -33,19 +32,15 @@ class _SignupPageState extends State<SignupPage> {
   void _signup() async {
     if (_formKey.currentState!.validate()) {
       try {
+        // ignore: unused_local_variable
         UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text,
           password: _passwordController.text,
         );
 
-        // Save user data to Firestore
-        await FirebaseFirestore.instance.collection('users').doc(userCredential.user?.uid).set({
-          'fullName': _nameController.text,
-          'age': _ageController.text,
-          'bloodType': _selectedBloodType,
-          'location': _selectedLocation,
-          'email': _emailController.text,
-        });
+        if (kDebugMode) {
+          print('User registered successfully');
+        }
 
         // Navigate to home page after successful signup
         // ignore: use_build_context_synchronously
@@ -62,7 +57,7 @@ class _SignupPageState extends State<SignupPage> {
         }
       } catch (e) {
         if (kDebugMode) {
-          print(e);
+          print('Error: $e');
         }
       }
     }

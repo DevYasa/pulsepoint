@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pulsepoint/home_screen/bloodbank_history_screen.dart'; // Make sure to import your new screen
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: _buildBottomNavigationBar(context),
     );
   }
 
@@ -158,7 +159,7 @@ class HomePage extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
-                    color: Colors.red,
+                    color: const Color.fromRGBO(189, 17, 30, 1),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: const Text('Urgent!', style: TextStyle(color: Colors.white)),
@@ -217,7 +218,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 40, color: Colors.red),
+            Icon(icon, size: 40, color: const Color.fromRGBO(189, 17, 30, 1)),
             const SizedBox(height: 10),
             Text(
               text,
@@ -230,7 +231,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomNavigationBar() {
+  Widget _buildBottomNavigationBar(BuildContext context) {
     return BottomNavigationBar(
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
@@ -238,11 +239,30 @@ class HomePage extends StatelessWidget {
         BottomNavigationBarItem(icon: Icon(Icons.local_hospital), label: 'Blood banks'),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
       ],
-      selectedItemColor: Colors.red,
+      selectedItemColor: const Color.fromRGBO(189, 17, 30, 1),
       unselectedItemColor: Colors.grey,
-      backgroundColor: Colors.red,
+      backgroundColor: const Color.fromRGBO(189, 17, 30, 1),
       onTap: (index) {
-        // Handle bottom navigation item tap
+        switch (index) {
+          case 0:
+            // Handle Home tap
+            break;
+          case 1:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const BloodBankHistoryScreen()),
+            );
+            break;
+          case 2:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const BloodBankHistoryScreen()),
+            );
+            break;
+          case 3:
+            // Handle Profile tap
+            break;
+        }
       },
     );
   }

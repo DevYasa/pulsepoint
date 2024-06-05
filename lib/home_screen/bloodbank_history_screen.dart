@@ -17,7 +17,7 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           toolbarHeight: 45,
-          backgroundColor: Colors.red,
+          backgroundColor: const Color.fromRGBO(189, 17, 30, 1),
           actions: <Widget>[
             IconButton(
               icon: const Icon(
@@ -92,7 +92,7 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
                                 style: TextStyle(
                                     fontSize: 35,
                                     color:
-                                        Colors.red), // Red color for '(1 ltr)'
+                                        Color.fromRGBO(189, 17, 30, 1)), // Red color for '(1 ltr)'
                               ),
                             ],
                           ),
@@ -124,7 +124,7 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
                                 style: TextStyle(
                                     fontSize: 35,
                                     color:
-                                        Colors.red), // Red color for '(1 ltr)'
+                                        Color.fromRGBO(189, 17, 30, 1)), // Red color for '(1 ltr)'
                               ),
                             ],
                           ),
@@ -156,7 +156,7 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
                                 style: TextStyle(
                                     fontSize: 35,
                                     color:
-                                        Colors.red), // Red color for '(1 ltr)'
+                                        Color.fromRGBO(189, 17, 30, 1)), // Red color for '(1 ltr)'
                               ),
                             ],
                           ),
@@ -188,7 +188,7 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
                                 style: TextStyle(
                                     fontSize: 35,
                                     color:
-                                        Colors.red), // Red color for '(1 ltr)'
+                                        Color.fromRGBO(189, 17, 30, 1)), // Red color for '(1 ltr)'
                               ),
                             ],
                           ),
@@ -204,7 +204,7 @@ class BloodBankHistoryScreenState extends State<BloodBankHistoryScreen> {
                       child: ElevatedButton(
                           style: ButtonStyle(
                             backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.red),
+                                MaterialStateProperty.all<Color>(const Color.fromRGBO(189, 17, 30, 1)),
                           ),
                           child: const Text(
                             'Go Back',
